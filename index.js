@@ -1,7 +1,7 @@
 // Game Object
 
 const gameState = {
-    players: ['x', 'o'],
+    players: ['X', 'O'],
     board: [
       [null, null, null],
       [null, null, null],
@@ -10,14 +10,23 @@ const gameState = {
   }
 
 const board = document.querySelector('.board')
+const cell = document.querySelector('.cell')
 // const ticTacBoard = ['', '', '', '', '', '', '', '', '',]
-let currentPlayer = 'x'
+const player1 = gameState.players[0]
+const player2 = gameState.players[1]
+let counter = 0
+
+function turn(){
+    if() {
+        
+    }
+}
 
 
   /* 
 - ***************Game area
--declare variables ( X or O)
--lines for grid in css
+- ***************declare variables ( X or O)
+-****************lines for grid in css
 - ***************shading for a checkered pattern
 - first click X second click 0 and alternate
 -update board
@@ -34,9 +43,10 @@ run js file
 // let initialState
 
 // //state
-// function buildInitialState() {
+// function init() {
 
 // }
+//  init()
 
 // //render
 // function renderState() {
@@ -47,7 +57,7 @@ run js file
 board.addEventListener('click', function (event) {
     console.log(event.target.id)
     gameState.board[event.target.id] = 'x'
-    event.target.innerText = currentPlayer
+    event.target.innerText = player1
 })
 
 // }
