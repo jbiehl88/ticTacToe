@@ -18,9 +18,10 @@ const gameState = {
 
 // put stuff on the screen
 
+const board = document.querySelector('.board')
 
-
-
+const newGameButton = document.createElement('button')
+newGameButton.classList.add('newGame')
 
 
 // make them work together
