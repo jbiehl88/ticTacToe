@@ -11,6 +11,10 @@ const gameState = {
   currentPlayer: "X",
 };
 
+// function computerPlay () {
+  
+// }
+
 function winCheck() {
   let array = gameState.board.flat();
   const winBanner = document.querySelector("#winBanner");
@@ -65,19 +69,29 @@ const player2 = gameState.players[1];
 
 // // listeners
 board.addEventListener("click", function (event) {
-  console.log(event.target.innerText.length, "checking this now");
+  // console.log(event.target.innerText.length, "checking this now");
   if (!event.target.innerText.length) {
-    console.log(gameState.count);
+    // console.log(gameState.count);
     if (gameState.count % 2 === 1) {
-      gameState.currentPlayer = "O";
-      console.log(event.target.id);
-      gameState.board[event.target.id] = "O";
-      event.target.innerText = player2;
+      gameState.currentPlayer = gameState.players[1];
+      // console.log(event.target.id);
+      gameState.board[event.target.id] = gameState.players[1];
+      event.target.innerText = gameState.players[1];
     } else {
-      gameState.currentPlayer = "X";
-      console.log(event.target.id);
-      gameState.board[event.target.id] = "X";
+      gameState.currentPlayer = player1;
+      // console.log(event.target.id);
+      gameState.board[event.target.id] = player1;
       event.target.innerText = player1;
+      if (gameState.players[1] === 'computer') {
+        console.log('hello im a computer')
+        // generate a random column and row
+        let row = Math.floor(Math.random() * 3)
+        let column = Math.floor(Math.random() * 3) 
+        console.log({row, column})
+        // check if the board at those index value is null
+        // if null place computers move at index
+        // if !null find new index
+      }
     }
     if (event.target.id === "zero") {
       gameState.board[0][0] = gameState.currentPlayer;
@@ -107,6 +121,10 @@ const pvp = document.querySelector("#twoPlayer");
 const comp = document.querySelector("#onePlayer");
 const reset = document.querySelector("#newGame");
 
+// comp.addEventListener('click', function(event) {
+
+// })
+
 reset.addEventListener("click", function (event) {
   gameState.board = [
     [null, null, null],
@@ -120,6 +138,8 @@ reset.addEventListener("click", function (event) {
     clearElem.innerText = ""
   }
   gameState.count = 0
+  let clearMessage = document.getElementById('winBanner')
+  clearMessage.innerText = ""
 });
 
 // put stuff on the screen
@@ -131,3 +151,15 @@ reset.addEventListener("click", function (event) {
 // make them work together
 
 // Write functions to manipulate gameState --> maybe even a method
+
+
+comp.addEventListener('click', function(event) {
+  gameState.players[1] = 'computer'
+  console.log(gameState.players)
+})
+/* 
+****step 1 - add an event listener to computer button
+****step 2 -  reset the gameState.players[1] to computer
+step 3 - add checks for player2 and change the logic to if (player2 === computer) 
+step 4 - add random gen for computer moves
+*/
