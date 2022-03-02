@@ -6,7 +6,9 @@
 body {
     background-color: black;
     display: flex;
+    flex-direction: column;
     justify-content: center;
+    align-items: center;
 }
 
 .board {
@@ -32,4 +34,33 @@ body {
 #one, #four, #seven {
     border-left: solid 20px black;
     border-right: solid 20px black
+}
+
+#winBanner {
+    color: rgb(88, 224, 156);
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 3rem;
+}
+
+.topMenu {
+    background-color: aqua;
+    height: 5rem;
+    width: 100%;
+}
+
+.button {
+    background-color: black;
+    color:white;
+    font-size: 2rem;
+    margin: 5px;
+    padding: 5px;
+    border-radius: 15px;
+}
+
+header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    border: solid black 2px;
 }

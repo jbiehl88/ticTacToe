@@ -28,7 +28,7 @@ function winCheck() {
   if (player1) {
     // console.log('so many hellos', array)
     if (array[0] === "X" && array[1] === "X" && array[2] === "X") {
-      console.log(winMessageX, "hello again");
+      // console.log(winMessageX, "hello again");
       winBanner.innerText = winMessageX;
     } else if (array[3] === "X" && array[4] === "X" && array[5] === "X") {
       winBanner.innerText(winMessageX);
@@ -73,36 +73,6 @@ const player1 = gameState.players[0];
 const player2 = gameState.players[1];
 let counter = 0;
 
-/* 
-- ***************Game area
-- ***************declare variables ( X or O)
--****************lines for grid in css
-- ***************shading for a checkered pattern
-- first click X second click 0 and alternate
--update board
--check for winning combo after each move
--update message to declare winner
-
-*************create function to place an X in a cell
-*************all function 
-*************run js file
-*/
-
-// Write functions to manipulate gameState --> maybe even a method?
-
-// let initialState
-
-// //state
-// function init() {
-
-// }
-//  init()
-
-// //render
-// function renderState() {
-
-// }
-
 // // listeners
 board.addEventListener("click", function (event) {
   console.log(gameState.count);
@@ -114,14 +84,12 @@ board.addEventListener("click", function (event) {
     console.log(gameState.board[0], "message after");
     event.target.innerText = player2;
     console.log(gameState.board);
-    // renderState()
     winCheck();
   } else {
     currentPlayer = "X";
     console.log(event.target.id);
     gameState.board[event.target.id] = "x";
     event.target.innerText = player1;
-    // renderState()
     winCheck();
   }
   if (event.target.id === "zero") {
@@ -143,20 +111,17 @@ board.addEventListener("click", function (event) {
   } else if (event.target.id === "eight") {
     gameState.board[2][2] = currentPlayer;
   }
-
   gameState.count++;
-  console.log(gameState.count, "hello Ed");
+  // console.log(gameState.count, "hello Ed");
 });
 
-// }
+const pvp = document.querySelector('#twoPlayer')
+const comp = document.querySelector('#onePlayer')
+const reset = document.querySelector('#newGame')
 
-// renderState()
-
-// function start() {
-//     if(Math.random() < 5) {
-
-//     }
-// }
+reset.addEventListener("click", function (event) {
+  location.reload()
+})
 
 // put stuff on the screen
 
@@ -174,3 +139,20 @@ board.addEventListener("click", function (event) {
 // computer.classList.add('computer')
 
 // make them work together
+
+
+// - ***************Game area
+// - ***************declare variables ( X or O)
+// -****************lines for grid in css
+// - ***************shading for a checkered pattern
+// - **************first click X second click 0 and alternate
+// -**************update board
+// -**************check for winning combo after each move
+// -*************update message to declare winner
+
+// *************create function to place an X in a cell
+// *************all function 
+// *************run js file
+
+
+// Write functions to manipulate gameState --> maybe even a method
