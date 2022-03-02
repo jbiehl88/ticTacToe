@@ -10,6 +10,62 @@ const gameState = {
   count: 0,
 };
 
+// [ 0, 1, 2,
+//   3, 4, 5,
+//   6, 7, 8,]
+
+function winCheck (win) {
+  win = gameState.board
+  // console.log(win.flat())
+  for (let i = 0; i < win.length; i++) {
+    let array = win[i]
+    let winMessageX = "Congratulations " + player1 + " wins!!!"
+    let winMessageO = "Congratulations " + player2 + " wins!!!"
+    let checker1 = [X, X, X]
+    let checker2 = [O, O, O]
+    if (player1) {
+      if (array[0][1][2] === checker1) {
+        return winMessageX
+      } else if (array[3][4][5] === checker1) {
+        return winMessageX
+      } else if (array[6][7][8] === checker1) {
+        return winMessageX
+      } else if (array[0][3][6] === checker1) {
+        return winMessageX
+      } else if (array[1][4][7] === checker1) {
+        return winMessageX
+      } else if (array[2][5][8] === checker1) {
+        return winMessageX
+      } else if (array[0][4][8] === checker1) {
+        return winMessageX
+      } else if (array[2][4][6] === checker1) {
+        return winMessageX
+      } 
+    } else if (player2) {
+      if (array[0][1][2] === checker2) {
+        return winMessageO
+      } else if (array[3][4][5] === checker2) {
+        return winMessageO
+      } else if (array[6][7][8] === checker2) {
+        return winMessageO
+      } else if (array[0][3][6] === checker2) {
+        return winMessageO
+      } else if (array[1][4][7] === checker2) {
+        return winMessageO
+      } else if (array[2][5][8] === checker2) {
+        return winMessageO
+      } else if (array[0][4][8] === checker2) {
+        return winMessageO
+      } else if (array[2][4][6] === checker2) {
+        return winMessageO
+      } 
+    }
+  }
+}
+
+
+
+
 const board = document.querySelector(".board");
 const cell = document.querySelector(".cell");
 // const ticTacBoard = ['', '', '', '', '', '', '', '', '',]
@@ -51,11 +107,11 @@ run js file
 board.addEventListener("click", function (event) {
   gameState.count ++
   if (gameState.count % 2 === 0) {
-    console.log(event.target.id);
+    // console.log(event.target.id);
     gameState.board[event.target.id] = "x";
     event.target.innerText = player1;
   } else {
-    console.log(event.target.id);
+    // console.log(event.target.id);
     gameState.board[event.target.id] = "O";
     event.target.innerText = player2;
   }
@@ -78,6 +134,10 @@ board.addEventListener("click", function (event) {
 
 // const newGameButton = document.createElement('button')
 // newGameButton.classList.add('newGame')
+// newGameButton.addEventListener('click', function(event){
+//   location.reload()
+
+// })
 
 // const computer = document.createElement('button')
 // computer.classList.add('computer')
