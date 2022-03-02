@@ -1,29 +1,23 @@
 // Game Object
 
 const gameState = {
-    players: ['X', 'O'],
-    board: [
-      [null, null, null],
-      [null, null, null],
-      [null, null, null]
-    ]
-  }
+  players: ["X", "O"],
+  board: [
+    [null, null, null],
+    [null, null, null],
+    [null, null, null],
+  ],
+  count: 0,
+};
 
-const board = document.querySelector('.board')
-const cell = document.querySelector('.cell')
+const board = document.querySelector(".board");
+const cell = document.querySelector(".cell");
 // const ticTacBoard = ['', '', '', '', '', '', '', '', '',]
-const player1 = gameState.players[0]
-const player2 = gameState.players[1]
-let counter = 0
+const player1 = gameState.players[0];
+const player2 = gameState.players[1];
+let counter = 0;
 
-function turn(){
-    if() {
-        
-    }
-}
-
-
-  /* 
+/* 
 - ***************Game area
 - ***************declare variables ( X or O)
 -****************lines for grid in css
@@ -54,11 +48,18 @@ run js file
 // }
 
 // // listeners
-board.addEventListener('click', function (event) {
-    console.log(event.target.id)
-    gameState.board[event.target.id] = 'x'
-    event.target.innerText = player1
-})
+board.addEventListener("click", function (event) {
+  gameState.count ++
+  if (gameState.count % 2 === 0) {
+    console.log(event.target.id);
+    gameState.board[event.target.id] = "x";
+    event.target.innerText = player1;
+  } else {
+    console.log(event.target.id);
+    gameState.board[event.target.id] = "O";
+    event.target.innerText = player2;
+  }
+});
 
 // }
 
@@ -69,8 +70,6 @@ board.addEventListener('click', function (event) {
 
 //     }
 // }
-
-
 
 // put stuff on the screen
 
