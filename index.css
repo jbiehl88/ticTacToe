@@ -6,9 +6,11 @@
 body {
     background-color: black;
     display: flex;
+    flex-wrap: wrap;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    width: 100%;
 }
 
 .board {
@@ -42,11 +44,11 @@ body {
     font-size: 3rem;
 }
 
-.topMenu {
+/* .topMenu {
     background-color: aqua;
     height: 5rem;
     width: 100%;
-}
+} */
 
 .button {
     background-color: black;
@@ -58,9 +60,43 @@ body {
 }
 
 header {
-    display: flex;
+    display:flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
     border: solid black 2px;
+    background-color: aqua;
+    height: 5rem;
+    width: 100%;
+}
+
+.player {
+    color: white;
+}
+
+.form {
+    font-size: 1.5rem;
+    padding: 1rem;
+}
+
+.playerX {
+    position: absolute;
+    top: 200px;
+    left: 10%;
+    text-align: start;
+    font-size: 3rem;
+    color: aqua;
+    font-weight: bold;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.playerO {
+    position: absolute;
+    top: 200px;
+    right: 10%;
+    text-align: start;
+    font-size: 3rem;  
+    color: aqua;
+    font-weight: bold;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }

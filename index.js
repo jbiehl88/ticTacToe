@@ -18,10 +18,11 @@ const gameState = {
 function winCheck() {
   let array = gameState.board.flat();
   const winBanner = document.querySelector("#winBanner");
-  console.log(winBanner, "banner");
+  // console.log(winBanner, "banner");
   console.log(array);
   let winMessageX = "Congratulations! " + player1 + " wins!!!";
   let winMessageO = "Congratulations! " + player2 + " wins!!!";
+  let tieMessage = ""
   if (gameState.currentPlayer === "X") {
     if (array[0] === "X" && array[1] === "X" && array[2] === "X") {
       winBanner.innerText = winMessageX;
@@ -59,6 +60,25 @@ function winCheck() {
     } else if (array[2] === "O" && array[4] === "O" && array[6] === "O") {
       winBanner.innerText = winMessageO;
     }
+  } else if (gameState.currentPlayer === "computer") {
+    if (array[0] === "computer" && array[1] === "computer" && array[2] === "computer") {
+      console.log(winMessageO, "hello again");
+      winBanner.innerText = winMessageO;
+    } else if (array[3] === "computer" && array[4] === "computer" && array[5] === "computer") {
+      winBanner.innerText = winMessageO;
+    } else if (array[6] === "computer" && array[7] === "computer" && array[8] === "computer") {
+      winBanner.innerText = winMessageO;
+    } else if (array[0] === "computer" && array[3] === "computer" && array[6] === "computer") {
+      winBanner.innerText = winMessageO;
+    } else if (array[1] === "computer" && array[4] === "computer" && array[7] === "computer") {
+      winBanner.innerText = winMessageO;
+    } else if (array[2] === "computer" && array[5] === "computer" && array[8] === "computer") {
+      winBanner.innerText = winMessageO;
+    } else if (array[0] === "computer" && array[4] === "computer" && array[8] === "computer") {
+      winBanner.innerText = winMessageO;
+    } else if (array[2] === "computer" && array[4] === "computer" && array[6] === "computer") {
+      winBanner.innerText = winMessageO;
+    }
   }
 }
 
@@ -67,28 +87,66 @@ const cell = document.querySelector(".cell");
 const player1 = gameState.players[0];
 const player2 = gameState.players[1];
 
+function newSpot() {
+  let row = Math.floor(Math.random() * 3)
+  let column = Math.floor(Math.random() * 3) 
+  let compMove = gameState.board[row][column]   
+  if (compMove === null) {
+    gameState.board[row][column] = gameState.players[1]
+    let currentCell
+    if(row === 0 && column === 0) {
+      currentCell = 'zero'
+    } else if (row === 0 && column === 1){
+      currentCell = 'one'
+    } else if (row === 0 && column === 2){
+      currentCell = 'two'
+    } else if (row === 1 && column === 0){
+        currentCell = 'three'
+    } else if (row === 1 && column === 1){
+        currentCell = 'four'
+    } else if (row === 1 && column === 2){
+        currentCell = 'five'
+    } else if (row === 2 && column === 0){
+        currentCell = 'six'
+    } else if (row === 2 && column === 1){
+        currentCell = 'seven'
+    } else if (row === 2 && column === 2){
+        currentCell = 'eight'
+        console.log('hello im a message brought to you by Toyota')
+    }
+    const computerCell = document.getElementById(currentCell)
+    computerCell.innerText = 'O'
+    winCheck()
+    return
+  } else {
+    return newSpot()
+  }
+}
+
 // // listeners
 board.addEventListener("click", function (event) {
   // console.log(event.target.innerText.length, "checking this now");
   if (!event.target.innerText.length) {
     // console.log(gameState.count);
-    if (gameState.count % 2 === 1) {
+    if (gameState.count % 2 === 1 && gameState.players[1] !== 'computer') {
       gameState.currentPlayer = gameState.players[1];
       // console.log(event.target.id);
       gameState.board[event.target.id] = gameState.players[1];
       event.target.innerText = gameState.players[1];
+
     } else {
-      gameState.currentPlayer = player1;
+      gameState.currentPlayer = gameState.players[0];
       // console.log(event.target.id);
-      gameState.board[event.target.id] = player1;
-      event.target.innerText = player1;
+      gameState.board[event.target.id] = gameState.players[0];
+      event.target.innerText = gameState.players[0];
       if (gameState.players[1] === 'computer') {
         console.log('hello im a computer')
-        // generate a random column and row
-        let row = Math.floor(Math.random() * 3)
-        let column = Math.floor(Math.random() * 3) 
-        console.log({row, column})
+        // winCheck()
+        newSpot(event)
+        console.log(gameState.board)
+        
         // check if the board at those index value is null
+        // *******if gameState.count % 2 ===1 && player2 is not computer
         // if null place computers move at index
         // if !null find new index
       }
@@ -141,6 +199,31 @@ reset.addEventListener("click", function (event) {
   let clearMessage = document.getElementById('winBanner')
   clearMessage.innerText = ""
 });
+
+// let playX = document.getElementsByClassName('textX')
+// let playO = document.getElementsByClassName('textO')
+let submitX = document.getElementsByClassName('submitX')
+let submitO = document.getElementsByClassName('submitO')
+let playerOneForm = document.getElementById('playerOne')
+let playerTwoForm = document.getElementById('playerTwo')
+let playerX = document.querySelector('.playerX')
+let playerO = document.querySelector('.playerO')
+
+playerOneForm.addEventListener('submit', function(event) {
+  event.preventDefault()
+  let playX = document.getElementsByClassName('textX')[0]
+  // console.log(playX.value)
+  playerX.innerText = `X is: ${playX.value}`
+})
+
+playerTwoForm.addEventListener('submit', function(event) {
+  event.preventDefault()
+  let playO = document.getElementsByClassName('textO')[0]
+  // console.log(playX.value)
+  playerO.innerText = `O is: ${playO.value}`
+})
+
+
 
 // put stuff on the screen
 
