@@ -11,77 +11,77 @@ const gameState = {
   currentPlayer: "X",
 };
 
-// have our order chosen for us by the game
-
+// function to check for winning combo
 function winCheck() {
   let array = gameState.board.flat();
   const winBanner = document.querySelector("#winBanner");
   console.log(array);
   let winMessageX = "Congratulations! " + player1 + " wins!!!";
   let winMessageO = "Congratulations! " + player2 + " wins!!!";
-  let tieMessage = "Oh no! It was a tie. New game?"
+  let tieMessage = "It was a tie! New game?"
+  
+  if ((array[0] && array[1] && array[2] && array[3] && array[4] && array[5] && array[6] && array[7] && array[8])  !== null) { //- checking for tie
+      winBanner.innerText = tieMessage
+  }
   if (gameState.currentPlayer === "X") {
-    if (array[0] === "X" && array[1] === "X" && array[2] === "X") {
-      winBanner.innerText = winMessageX;
+    if (array[0] === "X" && array[1] === "X" && array[2] === "X") { //----------------------------------------------------------- checking for win of X
+      alert(winBanner.innerText = winMessageX)
     } else if (array[3] === "X" && array[4] === "X" && array[5] === "X") {
-      winBanner.innerText = winMessageX;
+      alert(winBanner.innerText = winMessageX)
     } else if (array[6] === "X" && array[7] === "X" && array[8] === "X") {
-      winBanner.innerText = winMessageX;
+      alert(winBanner.innerText = winMessageX)
     } else if (array[0] === "X" && array[3] === "X" && array[6] === "X") {
-      winBanner.innerText = winMessageX;
+      alert(winBanner.innerText = winMessageX)
     } else if (array[1] === "X" && array[4] === "X" && array[7] === "X") {
-      winBanner.innerText = winMessageX;
+      alert(winBanner.innerText = winMessageX)
     } else if (array[2] === "X" && array[5] === "X" && array[8] === "X") {
-      winBanner.innerText = winMessageX;
+      alert(winBanner.innerText = winMessageX)
     } else if (array[0] === "X" && array[4] === "X" && array[8] === "X") {
-      winBanner.innerText = winMessageX;
+      alert(winBanner.innerText = winMessageX)
     } else if (array[2] === "X" && array[4] === "X" && array[6] === "X") {
-      winBanner.innerText = winMessageX;
+      alert(winBanner.innerText = winMessageX)
     }
   } else if (gameState.currentPlayer === "O") {
-    if (array[0] === "O" && array[1] === "O" && array[2] === "O") {
-      console.log(winMessageO, "hello again");
-      winBanner.innerText = winMessageO;
+    if (array[0] === "O" && array[1] === "O" && array[2] === "O") { //---------------------------------------------------------- checking for win of O
+      // console.log(winMessageO, "hello again");
+      alert(winBanner.innerText = winMessageO);
     } else if (array[3] === "O" && array[4] === "O" && array[5] === "O") {
-      winBanner.innerText = winMessageO;
+      alert(winBanner.innerText = winMessageO);
     } else if (array[6] === "O" && array[7] === "O" && array[8] === "O") {
-      winBanner.innerText = winMessageO;
+      alert(winBanner.innerText = winMessageO);
     } else if (array[0] === "O" && array[3] === "O" && array[6] === "O") {
-      winBanner.innerText = winMessageO;
+      alert(winBanner.innerText = winMessageO);
     } else if (array[1] === "O" && array[4] === "O" && array[7] === "O") {
-      winBanner.innerText = winMessageO;
+      alert(winBanner.innerText = winMessageO);
     } else if (array[2] === "O" && array[5] === "O" && array[8] === "O") {
-      winBanner.innerText = winMessageO;
+      alert(winBanner.innerText = winMessageO);
     } else if (array[0] === "O" && array[4] === "O" && array[8] === "O") {
-      winBanner.innerText = winMessageO;
+      alert(winBanner.innerText = winMessageO);
     } else if (array[2] === "O" && array[4] === "O" && array[6] === "O") {
-      winBanner.innerText = winMessageO;
+      alert(winBanner.innerText = winMessageO);
     }
-  } else if (gameState.currentPlayer === "computer") {
+  } else if (gameState.currentPlayer === "computer") { //--------------------------------------------------------------------- checking for win of computer
     if (array[0] === "computer" && array[1] === "computer" && array[2] === "computer") {
-      winBanner.innerText = winMessageO;
+      alert(winBanner.innerText = winMessageO);
     } else if (array[3] === "computer" && array[4] === "computer" && array[5] === "computer") {
-      winBanner.innerText = winMessageO;
+      alert(winBanner.innerText = winMessageO);
     } else if (array[6] === "computer" && array[7] === "computer" && array[8] === "computer") {
-      winBanner.innerText = winMessageO;
+      alert(winBanner.innerText = winMessageO);
     } else if (array[0] === "computer" && array[3] === "computer" && array[6] === "computer") {
-      winBanner.innerText = winMessageO;
+      alert(winBanner.innerText = winMessageO);
     } else if (array[1] === "computer" && array[4] === "computer" && array[7] === "computer") {
-      winBanner.innerText = winMessageO;
+      alert(winBanner.innerText = winMessageO);
     } else if (array[2] === "computer" && array[5] === "computer" && array[8] === "computer") {
-      winBanner.innerText = winMessageO;
+      alert(winBanner.innerText = winMessageO);
     } else if (array[0] === "computer" && array[4] === "computer" && array[8] === "computer") {
-      winBanner.innerText = winMessageO;
+      alert(winBanner.innerText = winMessageO);
     } else if (array[2] === "computer" && array[4] === "computer" && array[6] === "computer") {
-      winBanner.innerText = winMessageO;
+      alert(winBanner.innerText = winMessageO);
     }
-  } else if ((array[0] === (X || O || 'computer')) && (array[1] === (X || O || 'computer')) && (array[2] === (X || O || 'computer')) &&
-    (array[3] === (X || O || 'computer')) && (array[4] === (X || O || 'computer')) && (array[5] === (X || O || 'computer')) && 
-    (array[6] === (X || O || 'computer')) && (array[7] === (X || O || 'computer')) && (array[8] === (X || O || 'computer'))) {
-      winBanner.innerText = tieMessage
   }
 }
 
+//computer function to calculate move
 const board = document.querySelector(".board");
 const cell = document.querySelector(".cell");
 const player1 = gameState.players[0];
@@ -90,7 +90,7 @@ const player2 = gameState.players[1];
 function newSpot() {
   let row = Math.floor(Math.random() * 3)
   let column = Math.floor(Math.random() * 3) 
-  let compMove = gameState.board[row][column]   
+  let compMove = gameState.board[row][column] 
   if (compMove === null) {
     gameState.board[row][column] = gameState.players[1]
     let currentCell
@@ -122,7 +122,7 @@ function newSpot() {
   }
 }
 
-// // listeners
+// win checker listener
 board.addEventListener("click", function (event) {
   if (!event.target.innerText.length) {
     if (gameState.count % 2 === 1 && gameState.players[1] !== 'computer') {
@@ -135,7 +135,7 @@ board.addEventListener("click", function (event) {
       gameState.board[event.target.id] = gameState.players[0];
       event.target.innerText = gameState.players[0];
       if (gameState.players[1] === 'computer') {
-        console.log('hello im a computer')
+        console.log('hello im a computer') //----------------------------------------------------------------------- fun console.log
         newSpot(event)
         console.log(gameState.board)
       }
@@ -164,6 +164,7 @@ board.addEventListener("click", function (event) {
   }
 });
 
+// New game -- reset the board
 const pvp = document.querySelector("#twoPlayer");
 const comp = document.querySelector("#onePlayer");
 const reset = document.querySelector("#newGame");
@@ -185,6 +186,7 @@ reset.addEventListener("click", function (event) {
   clearMessage.innerText = ""
 });
 
+// adding player names
 let submitX = document.getElementsByClassName('submitX')
 let submitO = document.getElementsByClassName('submitO')
 let playerOneForm = document.getElementById('playerOne')
@@ -204,13 +206,46 @@ playerTwoForm.addEventListener('submit', function(event) {
   playerO.innerText = `O is: ${playO.value}`
 })
 
+// setting O to display computer
 comp.addEventListener('click', function(event) {
+  gameState.board = [
+    [null, null, null],
+    [null, null, null],
+    [null, null, null],
+  ]
+  let clear = document.getElementsByClassName('cell')
+  let divArray = Object.values(clear)
+  for (let i = 0; i < divArray.length; i++) {
+    let clearElem = divArray[i]
+    clearElem.innerText = ""
+  }
+  gameState.count = 1
+  let clearMessage = document.getElementById('winBanner')
+  clearMessage.innerText = ""
   let playerO = document.querySelector('.playerO')
   playerO.innerText = 'O is: computer'
   gameState.players[1] = 'computer'
   console.log(gameState.players)
 })
 
+// switching from computer to PVP & reset board
 pvp.addEventListener('click', function(event) {
-  location.reload()
+  // location.reload()
+  gameState.board = [
+    [null, null, null],
+    [null, null, null],
+    [null, null, null],
+  ]
+  let clear = document.getElementsByClassName('cell')
+  let divArray = Object.values(clear)
+  for (let i = 0; i < divArray.length; i++) {
+    let clearElem = divArray[i]
+    clearElem.innerText = ""
+  }
+  gameState.count = 0
+  let clearMessage = document.getElementById('winBanner')
+  clearMessage.innerText = ""
+  let clearPlayO = document.querySelector('.playerO')
+  gameState.players[1] = 'O'
+  clearPlayO.innerText = ""
 })
