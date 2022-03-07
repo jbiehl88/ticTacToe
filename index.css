@@ -42,6 +42,7 @@ body {
     color: rgb(88, 224, 156);
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     font-size: 3rem;
+    display: none;
 }
 
 .button {
